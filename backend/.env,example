@@ -1,0 +1,8 @@
+# .env.example
+DATABASE_URL="postgresql://user:password@db:5432/agrilink?schema=public"
+
+JWT_SECRET="your-super-secret-jwt-key-replace-this-with-a-strong-random-one"
+
+
+SUPABASE_URL="https://your-supabase-project-id.supabase.co"
+SUPABASE_KEY="your-supabase-anon-public-key"
