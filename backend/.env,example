@@ -1,8 +1,11 @@
-# .env.example
+# .env
+
+# PostgreSQL Connection URL for Prisma
 DATABASE_URL="postgresql://user:password@db:5432/agrilink?schema=public"
 
-JWT_SECRET="your-super-secret-jwt-key-replace-this-with-a-strong-random-one"
+# JWT Secret
+JWT_SECRET="your-super-secret-jwt-key"
 
-
-SUPABASE_URL="https://your-supabase-project-id.supabase.co"
-SUPABASE_KEY="your-supabase-anon-public-key"
+# Supabase Credentials
+SUPABASE_URL="https://ysnuxagviholbrovfoqu.supabase.co"
+SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlzbnV4YWd2aWhvbGJyb3Zmb3F1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAxNDk0MDYsImV4cCI6MjA2NTcyNTQwNn0.70Jjn-pC4AaOtrGqlcFZZfZptNDsqR8kVOwC-UDxUZk"
