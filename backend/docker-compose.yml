@@ -1,7 +1,16 @@
 # docker-compose.yml
-version: '3.8'
-
 services:
+  db:
+    image: postgres:15
+    ports:
+      - '5435:5432'  # Host:Container
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=agrilink
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Keep this for the database persistence
+
   backend:
     build:
       context: .
@@ -10,25 +19,16 @@ services:
       - '3000:3000'
     environment:
       - DATABASE_URL=postgresql://user:password@db:5432/agrilink?schema=public
-      - JWT_SECRET=${JWT_SECRET}
-      - SUPABASE_URL=${SUPABASE_URL}
-      - SUPABASE_KEY=${SUPABASE_KEY}
+      - JWT_SECRET=${JWT_SECRET} # Ensure .env file is present or env vars are set
+      - SUPABASE_URL=${SUPABASE_URL} # Ensure .env file is present or env vars are set
+      - SUPABASE_KEY=${SUPABASE_KEY} # Ensure .env file is present or env vars are set
       - PORT=3000
     depends_on:
       - db
-    volumes:
-      - .:/app
-
-  db:
-    image: postgres:15
-    ports:
-      - '5435:5432'
-    environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=agrilink
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+    # >>> ENSURE THIS SECTION IS ABSENT OR COMMENTED OUT <<<
+    # volumes:
+    #   - .:/app
+    #   - /app/node_modules
 
 volumes:
   pgdata:
